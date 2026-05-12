@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>主任增員實戰力養成計畫</title>
 
   <style>
@@ -23,21 +23,28 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      min-width: 0;
     }
 
     html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
     body {
+      width: 100%;
+      max-width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
       font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
       background:
         radial-gradient(circle at top left, rgba(47, 140, 255, 0.28), transparent 34%),
         radial-gradient(circle at 80% 12%, rgba(246, 166, 35, 0.18), transparent 28%),
         linear-gradient(145deg, #06152f 0%, #08285a 45%, #001f3f 100%);
       color: var(--white);
-      min-height: 100vh;
-      overflow-x: hidden;
     }
 
     body::before {
@@ -53,35 +60,55 @@
       z-index: 0;
     }
 
+    img,
+    svg,
+    video,
+    canvas {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      max-width: 100%;
+      word-break: keep-all;
+    }
+
     .page {
       position: relative;
       z-index: 1;
-      width: min(100%, 920px);
+      width: 100%;
+      max-width: 920px;
       margin: 0 auto;
       padding: 24px 18px 36px;
+      overflow: hidden;
     }
 
     .section {
+      width: 100%;
+      max-width: 100%;
       margin-bottom: 28px;
       scroll-margin-top: 28px;
     }
 
     .hero {
+      width: 100%;
+      max-width: 100%;
       min-height: 92vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 34px 0 26px;
       position: relative;
+      overflow: hidden;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      width: 240px;
-      height: 240px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
-      right: -120px;
+      right: -80px;
       top: 110px;
       background: radial-gradient(circle, rgba(246, 166, 35, 0.24), transparent 68%);
       filter: blur(3px);
@@ -91,6 +118,7 @@
     .eyebrow {
       display: inline-flex;
       width: fit-content;
+      max-width: 100%;
       align-items: center;
       gap: 8px;
       color: var(--kgi-gold);
@@ -102,10 +130,12 @@
       background: rgba(246, 166, 35, 0.09);
       border-radius: 999px;
       margin-bottom: 18px;
+      white-space: normal;
     }
 
     .eyebrow::before {
       content: "";
+      flex: 0 0 auto;
       width: 7px;
       height: 7px;
       background: var(--kgi-orange);
@@ -114,12 +144,15 @@
     }
 
     h1 {
+      width: 100%;
+      max-width: 100%;
       font-size: clamp(36px, 11vw, 64px);
       line-height: 1.08;
       letter-spacing: -0.04em;
       font-weight: 900;
       margin-bottom: 18px;
       text-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      overflow-wrap: break-word;
     }
 
     .gradient-text {
@@ -130,21 +163,28 @@
     }
 
     .hero-subtitle {
+      width: 100%;
+      max-width: 100%;
       font-size: clamp(21px, 6vw, 32px);
       line-height: 1.36;
       font-weight: 800;
       margin-bottom: 14px;
+      overflow-wrap: break-word;
     }
 
     .hero-desc {
+      width: 100%;
+      max-width: 620px;
       color: var(--soft-white);
       font-size: 16px;
       line-height: 1.8;
-      max-width: 620px;
       margin-bottom: 24px;
+      overflow-wrap: break-word;
     }
 
     .tag-row {
+      width: 100%;
+      max-width: 100%;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -155,6 +195,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      max-width: 100%;
       font-size: 13px;
       font-weight: 800;
       color: #fff8e9;
@@ -165,6 +206,9 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
       text-decoration: none;
       transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.25;
     }
 
     .tag:hover {
@@ -178,6 +222,7 @@
       justify-content: center;
       align-items: center;
       width: fit-content;
+      max-width: 100%;
       min-width: 190px;
       min-height: 48px;
       padding: 13px 22px;
@@ -189,6 +234,9 @@
       background: linear-gradient(135deg, #ffd36a 0%, #f6a623 100%);
       box-shadow: 0 12px 30px rgba(246, 166, 35, 0.32);
       transition: transform 0.22s ease, box-shadow 0.22s ease;
+      text-align: center;
+      line-height: 1.35;
+      white-space: normal;
     }
 
     .cta:hover {
@@ -197,27 +245,37 @@
     }
 
     .section-title {
+      width: 100%;
+      max-width: 100%;
       font-size: clamp(25px, 7vw, 36px);
       line-height: 1.22;
       font-weight: 900;
       margin-bottom: 14px;
       letter-spacing: -0.03em;
+      overflow-wrap: break-word;
     }
 
     .section-lead {
+      width: 100%;
+      max-width: 100%;
       color: var(--soft-white);
       font-size: 15.5px;
       line-height: 1.8;
       margin-bottom: 18px;
+      overflow-wrap: break-word;
     }
 
     .pain-wrap {
+      width: 100%;
+      max-width: 100%;
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
     }
 
     .pain-card {
+      width: 100%;
+      max-width: 100%;
       position: relative;
       padding: 18px 18px 18px 20px;
       border-radius: 22px;
@@ -242,15 +300,19 @@
       color: var(--kgi-gold);
       font-size: 20px;
       margin-bottom: 6px;
+      overflow-wrap: break-word;
     }
 
     .pain-card p {
       color: var(--soft-white);
       font-size: 15px;
       line-height: 1.65;
+      overflow-wrap: break-word;
     }
 
     .highlight-box {
+      width: 100%;
+      max-width: 100%;
       margin-top: 16px;
       padding: 18px;
       border-radius: 24px;
@@ -261,9 +323,12 @@
       line-height: 1.55;
       font-weight: 800;
       text-align: center;
+      overflow-wrap: break-word;
     }
 
     .module-grid {
+      width: 100%;
+      max-width: 100%;
       display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
@@ -271,6 +336,8 @@
     }
 
     .module-card {
+      width: 100%;
+      max-width: 100%;
       position: relative;
       padding: 20px;
       border-radius: 26px;
@@ -286,16 +353,18 @@
     .module-card::after {
       content: "";
       position: absolute;
-      width: 120px;
-      height: 120px;
-      right: -60px;
-      bottom: -60px;
+      width: 110px;
+      height: 110px;
+      right: -46px;
+      bottom: -46px;
       border-radius: 50%;
       background: rgba(246, 166, 35, 0.18);
       filter: blur(2px);
     }
 
     .module-top {
+      width: 100%;
+      max-width: 100%;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -317,19 +386,28 @@
     }
 
     .module-card h3 {
+      max-width: 100%;
       font-size: 22px;
       font-weight: 900;
       letter-spacing: -0.02em;
+      overflow-wrap: break-word;
     }
 
     .module-desc {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 100%;
       color: var(--soft-white);
       font-size: 15.5px;
       line-height: 1.75;
       margin-bottom: 14px;
+      overflow-wrap: break-word;
     }
 
     .course-label {
+      position: relative;
+      z-index: 1;
       color: var(--kgi-gold);
       font-size: 13px;
       font-weight: 800;
@@ -337,6 +415,8 @@
     }
 
     .course-tags {
+      width: 100%;
+      max-width: 100%;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -345,16 +425,23 @@
     }
 
     .course-tags span {
+      display: inline-flex;
+      max-width: 100%;
       font-size: 12.5px;
-      line-height: 1;
+      line-height: 1.25;
       color: #eaf4ff;
       padding: 8px 9px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.09);
       border: 1px solid rgba(255, 255, 255, 0.14);
+      white-space: normal;
+      overflow-wrap: break-word;
+      word-break: keep-all;
     }
 
     .quote {
+      width: 100%;
+      max-width: 100%;
       position: relative;
       padding: 30px 20px;
       border-radius: 30px;
@@ -371,7 +458,7 @@
     .quote::after {
       content: "";
       position: absolute;
-      width: 140px;
+      width: min(140px, 64%);
       height: 2px;
       background: linear-gradient(90deg, transparent, rgba(255, 211, 106, 0.72), transparent);
       left: 50%;
@@ -387,11 +474,14 @@
     }
 
     .quote h2 {
+      width: 100%;
+      max-width: 100%;
       font-size: clamp(25px, 7.5vw, 38px);
       line-height: 1.42;
       font-weight: 900;
       margin-bottom: 16px;
       letter-spacing: -0.04em;
+      overflow-wrap: break-word;
     }
 
     .quote strong {
@@ -399,12 +489,17 @@
     }
 
     .quote p {
+      width: 100%;
+      max-width: 100%;
       color: var(--soft-white);
       font-size: 15.5px;
       line-height: 1.8;
+      overflow-wrap: break-word;
     }
 
     .bottom-cta {
+      width: 100%;
+      max-width: 100%;
       text-align: center;
       padding: 4px 0 14px;
     }
@@ -415,10 +510,13 @@
     }
 
     .small-note {
+      width: 100%;
+      max-width: 100%;
       color: var(--muted);
       font-size: 12.5px;
       line-height: 1.7;
       margin-top: 14px;
+      overflow-wrap: break-word;
     }
 
     .float-orb {
@@ -431,7 +529,7 @@
     .orb1 {
       width: 80px;
       height: 80px;
-      left: -34px;
+      left: -24px;
       bottom: 120px;
       background: rgba(47, 140, 255, 0.24);
       filter: blur(1px);
@@ -444,6 +542,53 @@
       bottom: 48px;
       background: rgba(246, 166, 35, 0.32);
       filter: blur(0.5px);
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 22px 16px 34px;
+      }
+
+      .hero {
+        min-height: 88vh;
+      }
+
+      .hero::after {
+        right: -92px;
+        width: 190px;
+        height: 190px;
+      }
+
+      .tag-row {
+        gap: 8px;
+      }
+
+      .tag {
+        font-size: 12.5px;
+        padding: 9px 11px;
+      }
+
+      .module-card {
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      .module-top {
+        align-items: flex-start;
+      }
+
+      .module-card h3 {
+        font-size: 21px;
+        line-height: 1.25;
+      }
+
+      .course-tags span {
+        font-size: 12px;
+      }
+
+      .quote {
+        padding: 28px 18px;
+      }
     }
 
     @media (min-width: 760px) {
@@ -460,7 +605,7 @@
       }
 
       .module-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
       .module-card {
@@ -477,7 +622,6 @@
 <body>
   <main class="page">
 
-    <!-- 第一屏：主視覺 -->
     <section class="hero">
       <div class="float-orb orb1"></div>
       <div class="float-orb orb2"></div>
@@ -509,7 +653,6 @@
       </div>
     </section>
 
-    <!-- 第二屏：痛點 -->
     <section class="section">
       <h2 class="section-title">主任增員最常卡住的，<br />不是不想做</h2>
       <p class="section-lead">
@@ -539,7 +682,6 @@
       </div>
     </section>
 
-    <!-- 第三屏：R線課程內容 -->
     <section class="section">
       <h2 class="section-title">主任班學什麼？</h2>
       <p class="section-lead">
@@ -631,7 +773,6 @@
       </div>
     </section>
 
-    <!-- 第四屏：收斂金句 -->
     <section class="section">
       <div class="quote">
         <h2>
@@ -647,7 +788,6 @@
       </div>
     </section>
 
-    <!-- 回主管訓練藍圖 -->
     <section class="bottom-cta">
       <a class="cta" href="https://kaoruying.github.io/salestraining/">回主管訓練藍圖</a>
       <p class="small-note">
