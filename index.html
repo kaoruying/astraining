@@ -24,6 +24,7 @@
       margin: 0;
       padding: 0;
       min-width: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -31,6 +32,10 @@
       max-width: 100%;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     body {
@@ -45,6 +50,13 @@
         radial-gradient(circle at 80% 12%, rgba(246, 166, 35, 0.18), transparent 28%),
         linear-gradient(145deg, #06152f 0%, #08285a 45%, #001f3f 100%);
       color: var(--white);
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      -webkit-touch-callout: none;
     }
 
     body::before {
@@ -66,11 +78,16 @@
     canvas {
       max-width: 100%;
       height: auto;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     a {
       max-width: 100%;
       word-break: keep-all;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .page {
@@ -777,7 +794,7 @@
       <div class="quote">
         <h2>
           增員不是想到才做<br />
-        <strong>是建立穩定推進的節奏</strong>
+          <strong>是建立穩定推進的節奏</strong>
         </h2>
 
         <p>
@@ -795,5 +812,50 @@
     </section>
 
   </main>
+
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('cut', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      const key = e.key.toLowerCase();
+
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        ['c', 'x', 'a', 's', 'u', 'p'].includes(key)
+      ) {
+        e.preventDefault();
+      }
+
+      if (e.key === 'F12') {
+        e.preventDefault();
+      }
+
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        e.shiftKey &&
+        ['i', 'j', 'c'].includes(key)
+      ) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
