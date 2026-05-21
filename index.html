@@ -364,6 +364,8 @@
       border: 1px solid rgba(255, 255, 255, 0.18);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
       overflow: hidden;
+      isolation: isolate;
+      clip-path: inset(0 round 26px);
       scroll-margin-top: 24px;
     }
 
@@ -375,8 +377,14 @@
       right: -46px;
       bottom: -46px;
       border-radius: 50%;
-      background: rgba(246, 166, 35, 0.18);
-      filter: blur(2px);
+      background: radial-gradient(circle, rgba(246, 166, 35, 0.26) 0%, rgba(246, 166, 35, 0.12) 48%, transparent 72%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .module-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .module-top {
@@ -588,6 +596,7 @@
       .module-card {
         padding: 18px;
         border-radius: 24px;
+        clip-path: inset(0 round 24px);
       }
 
       .module-top {
